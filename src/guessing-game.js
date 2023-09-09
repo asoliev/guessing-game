@@ -7,16 +7,15 @@ class GuessingGame {
     }
 
     guess() {
-        return Math.round(this.max);
+        const sum = this.min + this.max;
+        const avg = sum / 2;
+        this.currentGuess = Math.ceil(avg);
+        return this.currentGuess;
     }
 
-    lower() {
-        this.max = this.max - (this.max - this.min) / 2;
-    }
+    lower() { this.max = this.currentGuess; }
 
-    greater() {
-        this.min = this.min + (this.max - this.min) / 2;
-    }
+    greater() { this.min = this.currentGuess; }
 }
 
 module.exports = GuessingGame;
